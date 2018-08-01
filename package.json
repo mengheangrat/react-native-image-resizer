@@ -1,11 +1,75 @@
 {
-  "name": "react-native-image-resizer",
-  "version": "1.0.0",
-  "description": "Rescale local images with React Native",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/4ian/react-native-image-resizer.git"
+  "_args": [
+    [
+      {
+        "raw": "react-native-image-resizer@^0.1.1",
+        "scope": null,
+        "escapedName": "react-native-image-resizer",
+        "name": "react-native-image-resizer",
+        "rawSpec": "^0.1.1",
+        "spec": ">=0.1.1 <0.2.0",
+        "type": "range"
+      },
+      "/Users/chintan/Projects/react-native/Pipay"
+    ]
+  ],
+  "_from": "react-native-image-resizer@>=0.1.1 <0.2.0",
+  "_id": "react-native-image-resizer@0.1.1",
+  "_inCache": true,
+  "_location": "/react-native-image-resizer",
+  "_nodeVersion": "4.2.1",
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/react-native-image-resizer-0.1.1.tgz_1494281327922_0.1508369822986424"
   },
+  "_npmUser": {
+    "name": "4ian",
+    "email": "Florian.rival@gmail.com"
+  },
+  "_npmVersion": "2.14.7",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "react-native-image-resizer@^0.1.1",
+    "scope": null,
+    "escapedName": "react-native-image-resizer",
+    "name": "react-native-image-resizer",
+    "rawSpec": "^0.1.1",
+    "spec": ">=0.1.1 <0.2.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-native-image-resizer/-/react-native-image-resizer-0.1.1.tgz",
+  "_shasum": "2abcac85d97e08854b2de716d62953bbae003c77",
+  "_shrinkwrap": null,
+  "_spec": "react-native-image-resizer@^0.1.1",
+  "_where": "/Users/chintan/Projects/react-native/Pipay",
+  "author": {
+    "name": "Florian Rival",
+    "email": "florianr@bam.tech",
+    "url": "http://bam.tech"
+  },
+  "bugs": {
+    "url": "https://github.com/4ian/react-native-image-resizer/issues"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "dependencies": {},
+  "description": "Rescale local images with React Native",
+  "devDependencies": {
+    "cz-conventional-changelog": "^1.2.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "2abcac85d97e08854b2de716d62953bbae003c77",
+    "tarball": "https://registry.npmjs.org/react-native-image-resizer/-/react-native-image-resizer-0.1.1.tgz"
+  },
+  "gitHead": "711527e2b4ddd63c5ed7100761c0c339511ac5ac",
+  "homepage": "https://github.com/4ian/react-native-image-resizer#readme",
   "keywords": [
     "react-native",
     "react",
@@ -18,22 +82,25 @@
     "scale",
     "resize"
   ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "4ian",
+      "email": "Florian.rival@gmail.com"
+    }
+  ],
+  "name": "react-native-image-resizer",
+  "optionalDependencies": {},
   "peerDependencies": {
-    "react": "^15.4.0 || ^16.0.0-alpha",
+    "react": "^15.4.0",
     "react-native": ">=v0.40.0"
   },
-  "author": "Florian Rival <florianr@bam.tech> (http://bam.tech)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/4ian/react-native-image-resizer/issues"
+  "readme": "# React Native Image Resizer\n\nA React Native module that can create scaled versions of local images (also supports the assets library on iOS).\n\n## Setup\n\nInstall the package:\n\n* 😻 React Native >= 0.40\n```\nnpm install --save react-native-image-resizer\nreact-native link react-native-image-resizer\n```\n\n* 👨 React Native >= 0.29.2 and < 0.40\n```\nnpm install --save react-native-image-resizer@0.0.12\nreact-native link react-native-image-resizer\n```\n\n* 👴 React Native >= 0.28 and < 0.29.2\n```\nnpm install rnpm -g\nrnpm install react-native-image-resizer@0.0.12\n```\n\n### Android\n\nNote: on latest versions of React Native, you may have an error during the Gradle build on Android (`com.android.dex.DexException: Multiple dex files define Landroid/support/v7/appcompat/R$anim`). Run `cd android && ./gradlew clean` to fix this.\n\n## Usage example\n\n```javascript\nimport ImageResizer from 'react-native-image-resizer';\n\nImageResizer.createResizedImage(imageUri, newWidth, newHeight, compressFormat, quality, rotation, outputPath).then((resizedImageUri) => {\n  // resizeImageUri is the URI of the new image that can now be displayed, uploaded...\n}).catch((err) => {\n  // Oops, something went wrong. Check that the filename is correct and\n  // inspect err to get more details.\n});\n```\n\n### Sample app\n\nA basic, sample app is available in [the `example` folder](https://github.com/bamlab/react-native-image-resizer/tree/master/example). It uses the module to resize a photo from the Camera Roll.\n\n## API\n\n### `promise createResizedImage(path, maxWidth, maxHeight, compressFormat, quality, rotation = 0, outputPath)`\n\nThe promise resolves with a string containing the URI of the new file. This URI can be used directly as the `source` of an [`<Image>`](https://facebook.github.io/react-native/docs/image.html) component.\n\n> :warning: On Android, `file:` will be prepended to the returned string. This allows it to be displayed as an image, but it also means you [won't be able to access the file directly](https://github.com/bamlab/react-native-image-resizer/issues/50) when using a utility like `fs`. To do so, you can simply use `rawPath = originalPath.replace('file:', '')` to get the raw path.\n\nOption | Description\n------ | -----------\npath | Path of image file, or a base64 encoded image string prefixed with 'data:image/imagetype' where `imagetype` is jpeg or png.\nmaxWidth | Image max width (ratio is preserved)\nmaxHeight | Image max height (ratio is preserved)\ncompressFormat | Can be either JPEG, PNG or WEBP (android only).\nquality | A number between 0 and 100. Used for the JPEG compression.\nrotation | Rotation to apply to the image, in degrees, for android. On iOS, rotation is limited (and rounded) to multiples of 90 degrees.\noutputPath | The resized image path. If null, resized image will be stored in cache folder. To set outputPath make sure to add option for rotation too (if no rotation is needed, just set it to 0).\n\n## Other open-source modules by the folks at [BAM](http://github.com/bamlab)\n\n * [rn-camera-roll](https://github.com/bamlab/rn-camera-roll)\n * [react-native-numberpicker-dialog](https://github.com/bamlab/react-native-numberpicker-dialog)\n * [react-native-animated-picker](https://github.com/bamlab/react-native-animated-picker)\n * [cordova-plugin-native-routing](https://github.com/bamlab/cordova-plugin-native-routing)\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/4ian/react-native-image-resizer.git"
   },
-  "homepage": "https://github.com/4ian/react-native-image-resizer#readme",
-  "devDependencies": {
-    "cz-conventional-changelog": "^1.2.0"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  }
+  "scripts": {},
+  "version": "0.1.1"
 }
